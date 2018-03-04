@@ -40,17 +40,16 @@ app.use(function (req, res, next) {
   next(err);
 });
 
-
 // Model config
 var categoryModel = require("./models/categoryModel"),
   filmModel = require('./models/filmModel'),
   userModel = require('./models/userModel')
 
 // Route config
-var adminRoute = require('./routes/adminRoute')(app),
-  categoryRoute = require('./routes/categoryRoute')(app),
-  filmRoute = require('./routes/filmRoute')(app),
-  userRoute = require('./routes/userRoute')(app),
-  index = require('./routes/index')(app)
+var adminRoute = require('./routes/adminRoute'),
+  categoryRoute = require('./routes/categoryRoute'),
+  filmRoute = require('./routes/filmRoute'),
+  userRoute = require('./routes/userRoute'),
+  index = require('./routes/index')
 
 module.exports = app;

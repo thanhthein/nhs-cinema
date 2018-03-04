@@ -1,6 +1,5 @@
-var MongoClient = require('mongodb').MongoClient,
-    mongodb_url = require('../config/config'),
-    Schema = MongoClient.Schema,
+var mongoose = require('mongoose'),
+    Schema = mongoose.Schema,
     userModel = new Schema({
         user_id: {
             type: Schema.Types.ObjectId,
