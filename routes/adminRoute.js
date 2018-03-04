@@ -4,5 +4,5 @@ module.exports = (app) => {
 
     // Route get, post, put...
     app.route('/' + config.__link_admin)
-        .post(adminController.adminPanel)
+        .get(adminController.adminPanel)
 }
