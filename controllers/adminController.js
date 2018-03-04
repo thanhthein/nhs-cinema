@@ -13,4 +13,8 @@ module.exports = (() => {
         })
     }
 
+    filmRoute.visit = (req, res) => {
+        res.send({ok: "sai nữa đi"})
+    }
+
 })()

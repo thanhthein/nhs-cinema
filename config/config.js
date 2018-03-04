@@ -16,6 +16,7 @@ var API_VERSION = ['api', 'api-test'],
 
         // Link Admin
         __link_admin: 'admin',
+        __link_admin_2: 'adminm',
 
         // Link reset password
         __link_reset_password: '/auth/reset-password/?access_token=',
