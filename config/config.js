@@ -15,7 +15,7 @@ var API_VERSION = ['api', 'api-test'],
         __link_category: API_VERSION[0] + '/category/',
 
         // Link Admin
-        __link_admin: '/admin',
+        __link_admin: 'admin',
 
         // Link reset password
         __link_reset_password: '/auth/reset-password/?access_token=',
