@@ -1,6 +1,6 @@
 var API_VERSION = ['api', 'api-test'],
     CONFIG_MONGO = {
-        _MONGO_LINK = "mongodb://admin:admin@ds155218.mlab.com:55218/cinema"
+        _MONGO_LINK = 'mongodb://admin:admin@ds155218.mlab.com:55218/cinema'
     },
 
     CONFIG_API = {

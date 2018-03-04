@@ -1,46 +1,56 @@
-var express = require('express');
-var path = require('path');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
+var express = require('express'),
+  path = require('path'),
+  favicon = require('serve-favicon'),
+  logger = require('morgan'),
+  cookieParser = require('cookie-parser'),
+  html = require('express-handlebars'),
+  mongoose = require('mongoose'),
+  bodyParser = require('body-parser'),
+  config = require('./config/config').CONFIG_MONGO,
+  app = express()
 
-var index = require('./routes/index');
-// var users = require('./routes/users');
+// Config mongoose
+mongoose.Promise = global.Promise
+mongoose.connect(config._MONGO_LINK, {
+  useMongoClient: true,
+})
 
-var app = express();
+// Config template views
+app.engine('html', html({
+  extname: 'html',
+  defaultLayout: 'template-layout',
+  layoutsDir: __dirname + '/views/'
+}))
+app.set('views', path.join(__dirname, 'views'))
+app.set('view engine', 'html')
 
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
+// Config body parser json
+app.use(bodyParser.urlencoded({
+  extended: true
+}))
+app.use(bodyParser.json())
 
-// uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-app.use(logger('dev'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
-
-app.use('/', index);
-// app.use('/users', users);
+// Config Public folder
+app.use(express.static(path.join(__dirname, 'public')))
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   var err = new Error('Not Found');
   err.status = 404;
   next(err);
 });
 
-// error handler
-app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
 
-  // render the error page
-  res.status(err.status || 500);
-  res.render('error');
-});
+// Model config
+var categoryModel = require("./models/categoryModel"),
+  filmModel = require('./models/filmModel'),
+  userModel = require('./models/userModel')
+
+// Route config
+var adminRoute = require('./routes/adminRoute')(app),
+  categoryRoute = require('./routes/categoryRoute')(app),
+  filmRoute = require('./routes/filmRoute')(app),
+  userRoute = require('./routes/userRoute')(app),
+  index = require('./routes/index')(app)
 
 module.exports = app;

@@ -1,12 +1,16 @@
 {
   "name": "lession1",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon ./app.js --exec babel-node"
   },
+  "author": "Thien 658JJH",
+  "license": "ISC",
   "dependencies": {
     "async": "^2.6.0",
+    "babel-cli": "^6.26.0",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "~1.18.2",
     "cookie-parser": "~1.4.3",
@@ -14,8 +18,11 @@
     "debug": "~2.6.9",
     "ejs": "~2.5.7",
     "express": "~4.15.5",
+    "express-handlebars": "^3.0.0",
     "mongodb": "^3.0.3",
+    "mongoose": "^5.0.8",
     "morgan": "~1.9.0",
+    "nodemon": "^1.17.1",
     "serve-favicon": "~2.4.5"
   }
 }
