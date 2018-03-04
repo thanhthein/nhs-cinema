@@ -1,17 +1,19 @@
+// Set timezone: Asia
+process.env.TZ = 'Asia/Ho_Chi_Minh'
+
 var express = require('express'),
+  config_mog = require('./config/config').CONFIG_MONGO,
+  config = require('./config/config').CONFIG_API,
+  port = process.env.PORT || config.__port_server,
+  app = express()
   path = require('path'),
-  favicon = require('serve-favicon'),
-  logger = require('morgan'),
-  cookieParser = require('cookie-parser'),
   html = require('express-handlebars'),
   mongoose = require('mongoose'),
-  bodyParser = require('body-parser'),
-  config = require('./config/config').CONFIG_MONGO,
-  app = express()
+  bodyParser = require('body-parser')
 
 // Config mongoose
 mongoose.Promise = global.Promise
-mongoose.connect(config._MONGO_LINK, {
+mongoose.connect(config_mog._MONGO_LINK, {
   useMongoClient: true,
 })
 
@@ -46,10 +48,10 @@ var categoryModel = require("./models/categoryModel"),
   userModel = require('./models/userModel')
 
 // Route config
-var adminRoute = require('./routes/adminRoute'),
-  categoryRoute = require('./routes/categoryRoute'),
-  filmRoute = require('./routes/filmRoute'),
-  userRoute = require('./routes/userRoute'),
-  index = require('./routes/index')
+var adminRoute = require('./routes/adminRoute')(app),
+  categoryRoute = require('./routes/categoryRoute')(app),
+  filmRoute = require('./routes/filmRoute')(app),
+  userRoute = require('./routes/userRoute')(app)
+  // index = require('./routes/index')
 
-module.exports = app;
+app.listen(port)

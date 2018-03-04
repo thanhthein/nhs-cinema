@@ -1,5 +1,5 @@
 module.exports = (app) => {
-    let filmController = require('../controllers/filmController'),
+    var filmController = require('../controllers/filmController'),
         config = require('../config/config').CONFIG_API
 
     // Route get, post, put...

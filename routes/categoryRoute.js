@@ -1,5 +1,5 @@
 module.exports = (app) => {
-    let categpryController = require('../controllers/categoryController'),
+    var categpryController = require('../controllers/categoryController'),
         config = require('../config/config').CONFIG_API
 
     // Route get, post, put...

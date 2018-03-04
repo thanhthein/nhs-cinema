@@ -15,8 +15,8 @@ var API_VERSION = ['api', 'api-test'],
         __link_category: API_VERSION[0] + '/category/',
 
         // Link Admin
-        __link_admin: 'admin/',
-        __link_admin_2: 'adminm/',
+        __link_admin: '/admin',
+        __link_admin_2: '/adminm',
 
         // Link reset password
         __link_reset_password: '/auth/reset-password/?access_token=',
@@ -25,7 +25,11 @@ var API_VERSION = ['api', 'api-test'],
         // MongoDB Config
         __database_name: 'cinema',
         __admin_name: 'admin',
-        __admin_password: 'admin'
+        __admin_password: 'admin',
+
+        // Port app server
+        __port_server: 80, // 80 if public to IP address
+
     }
 
 exports.CONFIG_MONGO = CONFIG_MONGO

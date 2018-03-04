@@ -12,4 +12,6 @@ module.exports = (() => {
         res.send({ ok: "sai nữa đi" })
     }
 
+    return adminRoute
+
 })()
