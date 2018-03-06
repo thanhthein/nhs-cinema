@@ -33,6 +33,11 @@ module.exports = (() => {
         }
     }
 
+
+    userRoute.login = (req, res) => {
+
+    }
+
     return userRoute
 
 })()

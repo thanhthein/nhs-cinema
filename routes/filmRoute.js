@@ -5,4 +5,8 @@ module.exports = (app) => {
     // Route get, post, put...
     app.route('/' + config.__link_film)
         .post(filmController.createFilm)
+
+        
+    app.route('/film/')
+    .post(filmController.createFilm)
 }

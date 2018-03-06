@@ -1,6 +1,7 @@
 var API_VERSION = ['api', 'api-test'],
     CONFIG_MONGO = {
-        __MONGO_LINK: 'mongodb://admin:admin@ds155218.mlab.com:55218/cinema'
+        // __MONGO_LINK: 'mongodb://admin:admin@ds155218.mlab.com:55218/cinema'
+        __MONGO_LINK: 'mongodb://localhost/cinema'
     },
 
     CONFIG_API = {
@@ -28,7 +29,7 @@ var API_VERSION = ['api', 'api-test'],
         __admin_password: 'admin',
 
         // Port app server
-        __port_server: 80, // 80 if public to IP address
+        __port_server: 3000, // 80 if public to IP address
 
     }
 

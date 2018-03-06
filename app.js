@@ -5,17 +5,15 @@ var express = require('express'),
   config_mog = require('./config/config').CONFIG_MONGO,
   config = require('./config/config').CONFIG_API,
   port = process.env.PORT || config.__port_server,
-  app = express()
+  app = express(),
   path = require('path'),
   html = require('express-handlebars'),
-  mongoose = require('mongoose'),
-  bodyParser = require('body-parser')
+  bodyParser = require('body-parser'),
+  mongoose = require('mongoose')
 
 // Config mongoose
 mongoose.Promise = global.Promise
-mongoose.connect(config_mog._MONGO_LINK, {
-  useMongoClient: true,
-})
+mongoose.connect(config_mog.__MONGO_LINK)
 
 // Config template views
 app.engine('html', html({
@@ -35,13 +33,6 @@ app.use(bodyParser.json())
 // Config Public folder
 app.use(express.static(path.join(__dirname, 'public')))
 
-// catch 404 and forward to error handler
-app.use(function (req, res, next) {
-  var err = new Error('Not 5 Found');
-  err.status = 404;
-  next(err);
-});
-
 // Model config
 var categoryModel = require("./models/categoryModel"),
   filmModel = require('./models/filmModel'),
@@ -51,7 +42,10 @@ var categoryModel = require("./models/categoryModel"),
 var adminRoute = require('./routes/adminRoute')(app),
   categoryRoute = require('./routes/categoryRoute')(app),
   filmRoute = require('./routes/filmRoute')(app),
-  userRoute = require('./routes/userRoute')(app)
-  // index = require('./routes/index')
+  userRoute = require('./routes/userRoute')(app),
+  home = require('./routes/appRoute')(app),
+  uploadRoute = require('./routes/uploadRoute')(app)
 
 app.listen(port)
+
+console.log('App has been connected from port: ' + port)
