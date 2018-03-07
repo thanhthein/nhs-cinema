@@ -16,18 +16,18 @@
                             <i class="fa fa-envelope-o fa-fw"></i>
                         </span>
                         <input type="email" class="form-control ng-valid ng-not-empty ng-dirty ng-valid-parse ng-touched" placeholder="Địa chỉ email"
-                            id="emailLogin" name="emailLogin" ng-model="emailLogin" required>
+                            id="email" name="emailLogin" ng-model="email" required>
                     </div>
                     <div class="input-group my-div">
                         <span class="input-group-addon">
                             <i class="fa fa-key fa-fw"></i>
                         </span>
-                        <input type="password" class="form-control ng-valid ng-not-empty ng-dirty ng-valid-parse ng-touched" id="passwordLogin" name="passwordLogin"
-                            placeholder="Mật khẩu" ng-model="passwordLogin">
+                        <input type="password" class="form-control ng-valid ng-not-empty ng-dirty ng-valid-parse ng-touched" id="password" name="passwordLogin"
+                            placeholder="Mật khẩu" ng-model="password">
                     </div>
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <input type="checkbox" value="true" id="rememberPassword" name="rememberPassword" ng-model="rememberPassword" class="ng-pristine ng-untouched ng-valid ng-empty"  required> Lưu mật khẩu
-                    </div>
+                    </div> -->
                     <div class="form-group text-center">
                         <button type="submit" class="btn btn-primary" id="btnLogin" name="btnLogin" ng-click="clickLogin()">
                             <i class="fa fa-sign-in fa-lg" aria-hidden="true"></i> Đăng nhập </button>

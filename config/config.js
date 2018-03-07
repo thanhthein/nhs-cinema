@@ -12,6 +12,7 @@ var API_VERSION = ['api', 'api-test'],
 
         // Link API
         __link_user: '/user/', // USER
+        __link_user_login: '/login/',
         __link_film: +'/film/',
         __link_category: API_VERSION[0] + '/category/',
 

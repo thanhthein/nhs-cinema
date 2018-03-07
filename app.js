@@ -6,6 +6,7 @@ var express = require('express'),
   config = require('./config/config').CONFIG_API,
   port = process.env.PORT || config.__port_server,
   app = express(),
+  session = require('express-session'),
   path = require('path'),
   html = require('express-handlebars'),
   bodyParser = require('body-parser'),
@@ -14,6 +15,13 @@ var express = require('express'),
 // Config mongoose
 mongoose.Promise = global.Promise
 mongoose.connect(config_mog.__MONGO_LINK)
+
+// Session
+app.use(session({
+  secret: '2C44-4D44-WppQ38S',
+  resave: true,
+  saveUninitialized: true
+}));
 
 // Config template views
 app.engine('html', html({
