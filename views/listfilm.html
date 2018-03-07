@@ -1,15 +1,18 @@
+<script src="/js/main/loadfilm.js"></script>
+<div class="row" ng-controller="loadFilmController">
 
-    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 animated fadeInUp">
-        <a ng-href="#">
-            <img src="https://imagejournal.org/wp-content/uploads/2018/02/392527381_37a80e9053_o-600x300.jpg" class="img-responsive"
-                alt="">
-            <div>
-                <h2> Tên gì đó </h2>
-                <hr>
-                <p>
-                    <span> Thể loại: </span> Thể loại a </p>
-                <p>
-                    <span class="my-text-bold"> Nội dung: </span> Nội dung </p>
+    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 my-portfolio-item animated fadeInUp"  ng-repeat="filmModel in listFilm">
+
+        <a ng-href="">
+            <img ng-src="" class="img-responsive" alt="">
+            <div class="detail">
+                <h2 class="name-film"> {{filmModel.filmName}} ({{filmModel.year}}) </h2>
+                <hr class="hr-film">
+                <p class="content-film">
+                    <span class="my-text-bold"> Thể loại: </span>{{filmModel.categoryName}} </p>
+                <!-- <p class="content-film" ng-init="content=minContentFilm(film)">
+                    <span class="my-text-bold"> Nội dung: </span> {{content}} </p> -->
             </div>
         </a>
     </div>
+</div>

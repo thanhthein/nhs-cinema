@@ -1,11 +1,7 @@
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema,
     userModel = new Schema({
-        user_id: {
-            type: Schema.Types.ObjectId,
-            default: null
-        },
-        user_name: {
+        userName: {
             type: String,
             default: ""
         },
@@ -13,7 +9,7 @@ var mongoose = require('mongoose'),
             type: String,
             default: null
         },
-        detail: {
+        email: {
             type: String,
             default: ""
         },
@@ -21,7 +17,7 @@ var mongoose = require('mongoose'),
             type: String,
             default: ""
         },
-        time_create: {
+        timeCreate: {
             type: Date,
             default: Date.now
         },
@@ -29,7 +25,7 @@ var mongoose = require('mongoose'),
             type: String,
             default: null
         },
-        is_admin: {
+        isAdmin: {
             type: Boolean,
             default: false
         }

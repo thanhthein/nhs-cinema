@@ -6,10 +6,10 @@ module.exports = (() => {
 
     categoryRoute.createCategory = (req, res) => {
         if (!func.isEmpty(req.body)) {
-            categoryModel.find({ category_id: req.body.category_id }, (error, result) => {
+            categoryModel.find({ categoryId: req.body.categoryId }, (error, result) => {
                 if (result[0] === undefined) {
                     new categoryModel({
-                        category_name: req.body.category_name,
+                        categoryName: req.body.categoryName,
                         detail: req.body.detail,
                         photo: req.body.photo
                     }).save((err, data) => {

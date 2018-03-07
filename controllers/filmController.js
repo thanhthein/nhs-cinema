@@ -7,8 +7,8 @@ module.exports = (() => {
     filmRoute.createFilm = (req, res) => {
         if (!func.isEmpty(req.body)) {
             new filmModel({
-                film_name: req.body.film_name,
-                category_name: req.body.category_name,
+                filmName: req.body.filmName,
+                categoryName: req.body.categoryName,
                 year: req.body.year,
                 detail: req.body.detail,
                 photo: req.body.photo,
@@ -22,6 +22,19 @@ module.exports = (() => {
         } else {
             res.status(200).json({ code: 400, message: "Create new film failed ! Body empty" })
         }
+    }
+
+    filmRoute.getAllFilm = (req, res) => {
+        filmModel.find({}, (err, result) => {
+            if (!func.isEmpty(result)) {
+                res.status(200).json({
+                    code: 200,
+                    films: result
+                })
+            } else {
+                res.status(404).json({ code: 404, message: 'Film is empty now !' })
+            }
+        })
     }
 
     return filmRoute

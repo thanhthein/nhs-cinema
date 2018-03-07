@@ -1,27 +1,23 @@
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema,
     filmModel = new Schema({
-        film_id: {
-            type: Schema.Types.ObjectId,
-            default: null
-        },
-        film_name: {
+        filmName: {
             type: String,
             default: ""
         },
-        category_id: {
+        categoryId: {
             type: String,
             default: ""
         },
-        category_name: {
+        categoryName: {
             type: String,
             default: ""
         },
-        creater_id: {
+        createrId: {
             type: String,
             default: ""
         },
-        time_open: {
+        timeOpen: {
             type: String,
             default: ""
         },
@@ -37,7 +33,7 @@ var mongoose = require('mongoose'),
             type: String,
             default: ""
         },
-        time_create: {
+        timeCreate: {
             type: Date,
             default: Date.now
         }

@@ -4,5 +4,6 @@ module.exports = (app) => {
 
     // Route get, post, put...
     app.route('/' + config.__link_user)
+        .get(userController.getUser)
         .post(userController.createUser)
 }

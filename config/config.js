@@ -11,8 +11,8 @@ var API_VERSION = ['api', 'api-test'],
         __API_SECRET: 'iP]Y@!_zPnxvKgy;C58#z=}D9YzS(Z',
 
         // Link API
-        __link_user: API_VERSION[0] + '/user/', // USER
-        __link_film: API_VERSION[0] + '/film/',
+        __link_user: '/user/', // USER
+        __link_film: +'/film/',
         __link_category: API_VERSION[0] + '/category/',
 
         // Link Admin

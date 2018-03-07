@@ -9,4 +9,14 @@ module.exports = (app) => {
 
     app.route('/upfilm')
         .get(appController.upfilm)
+
+
+    app.route('/film-detail')
+        .get(appController.filmDetail)
+
+    app.route('/login')
+        .get(appController.login)
+
+    app.route('/register')
+        .get(appController.register)
 }
