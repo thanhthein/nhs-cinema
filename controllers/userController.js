@@ -10,13 +10,6 @@ module.exports = (() => {
             bcrypt.hash(password, null, null, (err, hash) => {
                 callback(hash)
             })
-        },
-
-        // Verify password
-        __verify_password = (callback, password_de, password_en) => {
-            bcrypt.compare(password_de, password_en, (err, res) => {
-                callback(res)
-            })
         }
 
     userRoute.createUser = (req, res) => {
@@ -53,7 +46,6 @@ module.exports = (() => {
         }
     }
 
-
     // User Login
     userRoute.loginUser = (req, res) => {
         if (!func.isEmpty(req.body)) {
@@ -87,6 +79,7 @@ module.exports = (() => {
     }
 
 
+    // Logout
     userRoute.logOut = (req, res) => {
         req.session.destroy();
         res.status(200).json({ code: 200, message: "Logout successfully !" });
