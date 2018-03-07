@@ -20,16 +20,15 @@
 
     <script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
     <script src="https://npmcdn.com/bootstrap@4.0.0-alpha.5/dist/js/bootstrap.min.js"></script>
-    
+
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
 
     <script src="/js/main/app.js"></script>
-
     <meta charset="UTF-8" />
     <title>Module {{title}} - Admin Panel</title>
 </head>
 
-<body>
+<body ng-controller="todoController">
     <div class="container">
         <h2 class="my-detail">Cinema Application</h2>
         <nav class="navbar navbar-toggleable-md navbar-light bg-faded my-detail">
@@ -48,8 +47,17 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/upfilm">Upload film</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/login" >Login</a>
+                    <li class="nav-item" id="tablogin">
+                        <a class="nav-link" href="/login">Login</a>
+                    </li>
+
+                    <li class="nav-item" id="tablogin" style="display: none">
+                        <a class="nav-link disabled" href="#">
+                            <span id="nameusercurrent">null</span>
+                        </a>
+                        <a class="nav-link disabled" onclick="logOut()">
+                            <span id="nameusercurrent">Logout</span>
+                        </a>
                     </li>
                 </ul>
                 <form class="form-inline my-2 my-lg-0" id="formSearch">

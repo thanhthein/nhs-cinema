@@ -1,11 +1,12 @@
 module.exports = (() => {
     appRoute = {}
-    
+
     appRoute.home = (req, res) => {
+
         res.render('listfilm', {
             layout: 'template-layout',
             message: "defaultmess",
-            title: 'Dashboard'
+            title: 'Dashboard', 
         })
     }
 
@@ -37,6 +38,6 @@ module.exports = (() => {
         })
     }
 
-    
+
     return appRoute
 })()

@@ -66,7 +66,7 @@ module.exports = (() => {
 
                         req.session.user = data.userName;
                         if (res.userName == "Admin")
-                            session.admin = true;
+                            req.session.admin = true;
                         req.session.email = data.email
                     } else {
                         res.status(400).json({ code: 400, message: 'Wrong password' })
@@ -78,6 +78,15 @@ module.exports = (() => {
         }
     }
 
+    userRoute.checkLogin = (req, res) => {
+        console.log("=======" +req.session);
+
+        if (req.session) {
+            res.status(200).json({ code: 200, email: req.session.email, isAdmin: req.session.admin })
+        } else {
+            res.status(400).json({ code: 400 });
+        }
+    }
 
     // Logout
     userRoute.logOut = (req, res) => {
