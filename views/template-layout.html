@@ -32,7 +32,7 @@
 <body>
     <div class="container">
         <h2 class="my-detail">Cinema Application</h2>
-        <nav class="navbar navbar-toggleable-md navbar-light bg-faded my-detail">
+        <nav class="navbar navbar-toggleable-md navbar-light bg-faded my-nav">
 
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -40,29 +40,29 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent" ng-controller="todoController">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
+                    <li class="nav-item active my-a">
                         <a class="nav-link" href="/">Home
                             <span class="sr-only">(current)</span>
                         </a>
                     </li>
-                    <li class="nav-item" id="tabUpload">
+                    <li class="nav-item my-a" id="tabUpload">
                         <a class="nav-link" href="/upfilm" onclick="goUpload()">Upload film</a>
                     </li>
-                    <li class="nav-item" id="tabLogin">
+                    <li class=" nav-item my-a" id="tabLogin">
                         <a class="nav-link" onclick="goLogin()" href="/login">Login</a>
                     </li>
 
-                    <li class="nav-item" id="tabRegister" style="display: none" >
+                    <li class=" nav-item my-a" id="tabRegister" style="display: none">
                         <a class="nav-link" onclick="goLogin()" href="/register">Register</a>
                     </li>
 
-                    <li class="nav-item" id="tabloginShow" style="display: none">
+                    <li class=" nav-item my-a" id="tabloginShow" style="display: none">
                         <strong>
-                            <a class="nav-link disabled" href="/profile" id="nameusercurrent" onclick="goProfile()">
+                            <a class="nav-link" onclick="goProfile()" href="/profile" id="nameusercurrent">
                             </a>
                         </strong>
                     </li>
-                    <li class="nav-item" id="tabloginShow2" style="display: none">
+                    <li class=" nav-item my-a" id="tabloginShow2" style="display: none">
                         <a class="nav-link" onclick="logOut()">
                             <span id="nameusercurrent">Logout</span>
                         </a>

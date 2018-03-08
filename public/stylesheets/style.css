@@ -34,13 +34,16 @@ h6 {
   padding: 0 !important;
 }
 
-.bg-faded {
-  height: 60px !important;
-}
 .my-container-center {
   display: flex;
   flex-direction: row;
   justify-content: center;
+}
+
+.my-container-right {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
 }
 
 .my-div {
@@ -497,6 +500,18 @@ input[type=number]::-webkit-outer-spin-button {
   margin-bottom: 110px;
   line-height: 2;
 }
+.my-a {
+  padding: 0px !important;
+  height: 70px;
+  padding-top: 10px !important;
+  font-size: 17px !important;
+  font-weight: 800;
+}
+.my-nav {
+  padding: 0px !important;
+  height: 70px;
+}
+
 .my-detail {
   padding: 15px !important;
   height: 100%;

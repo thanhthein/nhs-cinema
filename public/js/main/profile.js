@@ -5,25 +5,23 @@ app.controller("profileController", ['$scope', function ($scope) {
     hideSearch();
     hideUploadFilm();
     // Login 
-    $scope.loadInfo = function () {
-        $.get('/user/', {}, function(res){
-            if(res.status == 200){
-                document.getElementById('email').value = res.email,
+    $.get('/user/', {}, function (res) {
+        if (res.status == 200) {
+            document.getElementById('email').value = res.email,
                 document.getElementById('username').value = res.userName
-                console.log("Already get");
-            } else {
-                console.log("Can not get");
-                
-            }
-        })
+            console.log("Already get");
+        } else {
+            console.log("Can not get");
+
+        }
+    })
+
+    $scope.clickSaveProfile = function () {
+
+
     }
 
-    $scope.clickSaveProfile = function(){
-
-
-    }
-
-    $scope.clickUploadImage = function(){
+    $scope.clickUploadImage = function () {
 
     }
 

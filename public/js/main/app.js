@@ -58,7 +58,7 @@ function goLogin() {
     window.location.href = '/login';
 }
 
-function goLogin() {
+function goProfile() {
     window.location.href = '/profile';
 }
 
