@@ -1,6 +1,5 @@
-<!-- <script src="/js/main/upfilm.js"> -->
-hideSearch(); </script>
-<!-- <div ng-controller="upFilmController"> -->
+<script src="/js/main/upfilm.js"> </script>
+<div ng-controller="upFilmController">
 <form role="form" class="ng-pristine ng-valid">
     <div class="row">
         <div class="col-sm-12 col-md-4 my-upload-image text-center animated fadeIn">
@@ -8,8 +7,7 @@ hideSearch(); </script>
                 <img id="imageFilm" name="imageFilm" ng-model="imageFilm" src="http://americanconstruction.net/wp-content/uploads/2015/10/upload-empty.png"
                     style="width: 300px; height: 300px">
             </a>
-            <input type="file" ng-model="imageSelect" style="display:none" id="fileInput" name="fileInput" accept="image/*" onchange="readURL(this)"
-            />
+            <input type="file" ng-model="imageSelect" style="display:none" id="fileInput" name="fileInput" accept="image/*" onchange="readURL(this)"/>
 
             <button type="button" class="btn btn-primary my-btn text-center" ng-click="clickUploadImage()">
                 <i class="fa fa-file-image-o fa-lg" aria-hidden="true"></i>
@@ -20,7 +18,7 @@ hideSearch(); </script>
         <div class="col-sm-12 col-md-8 my-form-film animated flipInX">
             <div class="form-group">
                 <label for="filmname">Tên phim:</label>
-                <input type="text" class="form-control" id="filmName" ng-model="filmName">
+                <input type="text" class="form-control" id="filmName" ng-model="filmName" ng-click="uploadImage()">
             </div>
             <div class="form-group">
                 <h4>Thể loại phim:</h4>

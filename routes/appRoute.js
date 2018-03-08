@@ -15,4 +15,8 @@ module.exports = (app) => {
 
     app.route('/register')
         .get(appController.register)
+
+        
+    app.route('/profile')
+    .get(appController.auth)
 }

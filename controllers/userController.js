@@ -70,6 +70,7 @@ module.exports = (() => {
                         req.session.email = data.email
                     } else {
                         res.status(400).json({ code: 400, message: 'Wrong password' })
+                        return
                     }
                 }
             })
@@ -78,25 +79,35 @@ module.exports = (() => {
         }
     }
 
-    userRoute.checkLogin = (req, res) => {
-        console.log("=======" +req.session);
-
-        if (req.session) {
-            res.status(200).json({ code: 200, email: req.session.email, isAdmin: req.session.admin })
+    userRoute.getUser = (req, res) => {
+        if (!func.isEmpty(req.id)) {
+            userModel.findOne({ _id: req.id }, (err, data) => {
+                if (data == null) { // The email does not exist
+                    res.status(404).json({ code: 404, message: 'User is not exist' })
+                } else if (data) {
+                    res.status(200).json({
+                        code: 200,
+                        userName: data.userName,
+                        email: data.email,
+                        timeCreate: data.timeCreate
+                    })
+                } else {
+                    res.status(404).json({ code: 403, message: 'User is not found' })
+                }
+            })
         } else {
-            res.status(400).json({ code: 400 });
+            res.status(403).json({ code: 403, message: 'The request is understood, but it has been refused or access is not allowed' })
         }
     }
 
-    // Logout
-    userRoute.logOut = (req, res) => {
-        req.session.destroy();
-        res.status(200).json({ code: 200, message: "Logout successfully !" });
-    }
 
-    userRoute.getUser = (req, res) => {
-        console.log("Sdsdsd");
-    }
+
+    // userRoute.getUser = (req, res) => {
+    //     if (!func.isEmpty(req.id)) {
+    //     }
+
+    // }
+
 
     return userRoute
 

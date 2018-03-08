@@ -7,14 +7,16 @@ module.exports = (() => {
             return res.status(400).send('No files were uploaded.');
 
         // The name of the input field (i.e. "sampleFile") is used to retrieve the uploaded file
-        let sampleFile = req.files.sampleFile;
+        let fileInput = req.files.fileInput,
+        name = './pictures/' + Date.now
 
         // Use the mv() method to place the file somewhere on your server
-        sampleFile.mv('./pictures/filename.jpg', function (err) {
+        fileInput.mv(name, function (err) {
             if (err)
                 return res.status(500).send(err);
             res.send('File uploaded!');
         });
+        res.status(200).json({name: name})
     }
 
     uploadRoute.uploads = (req, res) => {

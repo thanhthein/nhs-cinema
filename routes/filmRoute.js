@@ -1,6 +1,9 @@
 module.exports = (app) => {
     var filmController = require('../controllers/filmController'),
-        config = require('../config/config').CONFIG_API
+        config = require('../config/config').CONFIG_API,
+        fileUpload = require('express-fileupload');
+
+    app.use(fileUpload());
 
     // Route get, post, put...
     app.route('/' + config.__link_film)

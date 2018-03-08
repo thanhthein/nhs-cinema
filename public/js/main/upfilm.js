@@ -1,6 +1,11 @@
-var app = angular.module("app.todos", []);
+angular.module("cinema").controller("upFilmController", ['$scope', function ($scope) {
 
-app.controller("upFilmController", ['$scope', function ($scope) {
+    var photoUrl;
+
+    hideLogin();
+    hideSearch();
+    hideUploadFilm();
+
     $scope.listGenreFilms = [
         'Tiểu sử lịch sử',
         'Lãng mạn tình cảm',
@@ -36,32 +41,23 @@ app.controller("upFilmController", ['$scope', function ($scope) {
     $scope.appName = "Any things !!";
 
     $scope.clickUploadFilm = function () {
-
-        if ($scope.filmName.length < 5 || $scope.filmName.length > 50) {
+        if (document.getElementById('filmName').value.length < 5 || document.getElementById('filmName').value.length > 50) {
             document.getElementById('filmName').setCustomValidity('Tên bộ phim từ 5-50 ký tự');
             return;
         }
-
         document.getElementById('filmName').setCustomValidity('');
-        if ($scope.filmContent.length < 10) {
+
+        if (document.getElementById('filmContent').value.length < 10) {
             document.getElementById('filmContent').setCustomValidity('Mô tả bộ phim tối thiểu 10 ký tự');
             return;
         }
         document.getElementById('filmContent').setCustomValidity('');
 
-        var photoImage = $('#imageFilm').attr;
-        if (photoImage === null || photoImage == "http://americanconstruction.net/wp-content/uploads/2015/10/upload-empty.png") {
-            alert('Bạn chưa chọn ảnh minh họa phim');
-            return;
-        }
-        console.log($scope.photoImage);
-
         $.post("/film/", {
             filmName: $scope.filmName,
             categoryName: $scope.filmGenre,
             year: $scope.filmYear,
-            detail: $scope.filmContent,
-            // photo: photoImage
+            detail: $scope.filmContent
         }, function (res) {
             console.log(res);
             if (res.code == 200) {
@@ -81,6 +77,15 @@ app.controller("upFilmController", ['$scope', function ($scope) {
         return film.content.substr(0, len) + '...';
     }
 
+    $scope.uploadImage = function () {
+        // console.log("UPload image start !");
+        // $.post('/upload',{}, function (req, res) {
+        //     console.log(res);
+        //     console.log('==== ');
+            
+        // });
+    }
+
 }])
 
 function readURL(input) {
@@ -94,8 +99,4 @@ function readURL(input) {
 
         reader.readAsDataURL(input.files[0]);
     }
-}
-
-function hideSearch() {
-    $('#formSearch').attr('style', 'display:none');
 }

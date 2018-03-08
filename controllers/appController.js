@@ -38,6 +38,12 @@ module.exports = (() => {
         })
     }
 
+    appRoute.auth = (req, res) => {
+        res.render('profile', {
+            layout: 'template-layout',
+            title: 'User profile'
+        })
+    }
 
     return appRoute
 })()

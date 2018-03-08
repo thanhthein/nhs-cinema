@@ -12,7 +12,4 @@ module.exports = (app) => {
         .get(appController.login)
         .post(userController.loginUser)
 
-    app.route("/check/")
-        .get(userController.checkLogin)
-
 }

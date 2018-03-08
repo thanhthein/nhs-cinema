@@ -9,6 +9,7 @@
   "author": "Thien 658JJH",
   "license": "ISC",
   "dependencies": {
+    "angular-route": "^1.6.9",
     "async": "^2.6.0",
     "babel-cli": "^6.26.0",
     "bcrypt-nodejs": "0.0.3",
@@ -16,6 +17,7 @@
     "cookie-parser": "^1.4.3",
     "crypto": "^1.0.1",
     "debug": "~2.6.9",
+    "ejs-locals": "^1.0.2",
     "express": "^4.16.2",
     "express-fileupload": "^0.4.0",
     "express-handlebars": "^3.0.0",

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="app.todos">
+<html ng-app="cinema" class="ng-scope">
 
 <head>
 
@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="/stylesheets/loader.css">
 
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="//code.angularjs.org/1.6.9/angular-route.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
     <script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
@@ -28,7 +29,7 @@
     <title>Module {{title}} - Admin Panel</title>
 </head>
 
-<body ng-controller="todoController">
+<body>
     <div class="container">
         <h2 class="my-detail">Cinema Application</h2>
         <nav class="navbar navbar-toggleable-md navbar-light bg-faded my-detail">
@@ -37,25 +38,32 @@
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent" ng-controller="todoController">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
                         <a class="nav-link" href="/">Home
                             <span class="sr-only">(current)</span>
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/upfilm">Upload film</a>
+                    <li class="nav-item" id="tabUpload">
+                        <a class="nav-link" href="/upfilm" onclick="goUpload()">Upload film</a>
                     </li>
-                    <li class="nav-item" id="tablogin">
-                        <a class="nav-link" href="/login">Login</a>
+                    <li class="nav-item" id="tabLogin">
+                        <a class="nav-link" onclick="goLogin()" href="/login">Login</a>
                     </li>
 
-                    <li class="nav-item" id="tablogin" style="display: none">
-                        <a class="nav-link disabled" href="#">
-                            <span id="nameusercurrent">null</span>
-                        </a>
-                        <a class="nav-link disabled" onclick="logOut()">
+                    <li class="nav-item" id="tabRegister" style="display: none" >
+                        <a class="nav-link" onclick="goLogin()" href="/register">Register</a>
+                    </li>
+
+                    <li class="nav-item" id="tabloginShow" style="display: none">
+                        <strong>
+                            <a class="nav-link disabled" href="/profile" id="nameusercurrent" onclick="goProfile()">
+                            </a>
+                        </strong>
+                    </li>
+                    <li class="nav-item" id="tabloginShow2" style="display: none">
+                        <a class="nav-link" onclick="logOut()">
                             <span id="nameusercurrent">Logout</span>
                         </a>
                     </li>
