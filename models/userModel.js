@@ -23,7 +23,7 @@ var mongoose = require('mongoose'),
         },
         timeCreate: {
             type: Number,
-            default: Date.now
+            default: Date.now,
         },
         timeModified: {
             type: Number,

@@ -9,19 +9,18 @@ module.exports = (app) => {
         if (!func.isEmpty(req.body)) {
             var fileInputAvatar = req.files.fileInputAvatar,
                 namefile
-            if (req.files.fileInputAvatar) {
+            if (fileInputAvatar) {
                 namefile = new Date().getTime() + fileInputAvatar.name
-                fileInputAvatar.mv(__dirname + "/../public/images/" + namefile, function (err) {
-                    if (err && have) {
+                fileInputAvatar.mv(__dirname + "/../public/images/upfile/" + namefile, function (err) {
+                    if (err) {
                         return res.status(500).send(err);
                     } else {
                         userModel.findByIdAndUpdate({
                             _id: req.body._id
                         }, {
                                 userName: req.body.username,
-                                email: req.body.emailvalue,
                                 phone: req.body.phone,
-                                photo: '/images/' + namefile,
+                                photo: '/images/upfile/' + namefile,
                                 timeModified: Date.now()
                             }, {
                                 upsert: true,
@@ -36,7 +35,6 @@ module.exports = (app) => {
                     _id: req.body._id
                 }, {
                         userName: req.body.username,
-                        email: req.body.email,
                         phone: req.body.phone,
                         timeModified: Date.now()
                     }, {

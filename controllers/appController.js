@@ -21,18 +21,21 @@ module.exports = (() => {
 
     appRoute.filmDetail = (req, res) => {
         filmModel.find({ _id: req.query.id }, (err, result) => {
-            if (!func.isEmpty(result)) {
+
+            console.log(" = " +res);
+            
+        //     if (!func.isEmpty(result)) {
                 res.render('film-detail', {
                     layout: 'template-layout',
                     title: 'Film detail',
-                    name: result.filmName,
-                    catego: result.categoryName,
-                    detail: result.detail,
-                    photo: result.photo
+                    // name: result.filmName,
+                    // catego: result.categoryName,
+                    // detail: result.detail,
+                    // photo: result.photo
                 })
-            } else {
-                res.status(404).json({ code: 404, message: 'Film is empty now !' })
-            }
+            // } else {
+            //     res.status(404).json({ code: 404, message: 'Film is empty now !' })
+            // }
         })
     }
 

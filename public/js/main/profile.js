@@ -10,7 +10,7 @@ app.controller("profileController", ['$scope', function ($scope) {
             document.getElementById('email').value = res.email
             document.getElementById('username').value = res.userName
             document.getElementById('imageAvatar').src = res.photo
-            document.getElementById('tel').value = res.phone
+            document.getElementById('phone').value = res.phone
             document.getElementById('_id').value = res._id
         } else {
             console.log("Can not get");

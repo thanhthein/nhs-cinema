@@ -11,7 +11,7 @@ var express = require('express'),
   html = require('express-handlebars'),
   bodyParser = require('body-parser'),
   mongoose = require('mongoose'),
-  fileUpload = require('express-fileupload');
+  fileUpload = require('express-fileupload')
 
 
 // Config mongoose

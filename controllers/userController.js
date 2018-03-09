@@ -13,8 +13,8 @@ module.exports = (() => {
         }
 
     userRoute.createUser = (req, res) => {
-        if (!func.isEmpty(req.body) && req.body.userName.length > 1 && !req.body.password.length > 1 && !req.body.photo) {
-            userModel.find({ email: req.body.emailSignUp }, (error, result) => {
+        if (!func.isEmpty(req.body)) {
+            userModel.find({ email: req.body.email }, (error, result) => {
                 if (result[0] === undefined) {
                     let __encrypt_password = (hash) => {
                         new userModel({
@@ -23,7 +23,7 @@ module.exports = (() => {
                             photo: req.body.photo,
                             password: hash,
                             isAdmin: false,
-                            email: req.body.emailSignUp,
+                            email: req.body.email,
                             reset_password_token: func.__generate_reset_password_token(),
                             accessToken: func.__generate_access_token({
                                 userName: req.body.userName,
@@ -54,11 +54,15 @@ module.exports = (() => {
     // User Login
     userRoute.loginUser = (req, res) => {
         if (!func.isEmpty(req.body)) {
+
+            console.log(req.body.email + " -- " + req.body.password);
+
+
             userModel.findOne({ email: req.body.email }, (err, data) => {
-                if (data == null) { // The email does not exist
-                    res.status(404).json({ code: 404, message: 'The email does not exist' })
-                } else if (data) {
+                
+                if (data) {
                     // Check password
+                    console.log("Have data ")
                     if (func.__verify_password(req.body.password, data.password)) {
                         res.status(200).json({
                             code: 200,
@@ -69,13 +73,17 @@ module.exports = (() => {
                             accessToken: data.accessToken,
                         })
                     } else {
-                        res.status(400).json({ code: 400, message: 'Wrong password' })
+                        res.status(200).json({ code: 400, message: 'User or password is not correct !' })
                         return
                     }
+                } else {
+                    res.status(200).json({ code: 404, message: 'The email does not exist' })
+                    console.log("Empty ")
+                    return
                 }
             })
         } else {
-            res.status(403).json({ code: 403, message: 'The request is understood, but it has been refused or access is not allowed' })
+            res.status(200).json({ code: 403, message: 'The request is understood, but it has been refused or access is not allowed' })
         }
     }
 
@@ -91,6 +99,7 @@ module.exports = (() => {
                         userName: data.userName,
                         email: data.email,
                         photo: data.photo,
+                        phone: data.phone,
                         timeCreate: data.timeCreate
                     })
                 } else {

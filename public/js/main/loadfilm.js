@@ -20,7 +20,6 @@ app.controller("loadFilmController", ['$scope', function ($scope) {
 
 
     $scope.minContentFilm = function (film) {
-        console.log(" film " + film);
         var len = film.detail.length > 150 ? 150 : film.detail.length;
         return film.detail.substr(0, len) + '...';
     }
@@ -34,9 +33,4 @@ app.controller("loadFilmController", ['$scope', function ($scope) {
          window.location.href + "film-detail?id=" + film._id;
     }
 
-
 }])
-
-function goToFilm(film) {
-    window.location.href + "film-detail?id="+film._id;
-}

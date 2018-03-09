@@ -58,7 +58,7 @@ app.controller("upFilmController", ['$scope', function ($scope) {
         $.post("/film/", {
             filmName: $scope.filmName,
             categoryName: $scope.filmGenre,
-            year: $scope.filmYear,
+            year: $scope.filmYear.value.replace("string:", ""),
             detail: $scope.filmContent
         }, function (res) {
             console.log(res);
