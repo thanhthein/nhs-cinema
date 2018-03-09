@@ -25,6 +25,10 @@ var mongoose = require('mongoose'),
             type: Number,
             default: Date.now
         },
+        timeModified: {
+            type: Number,
+            default: Date.now
+        },
         accessToken: {
             type: String,
             default: null

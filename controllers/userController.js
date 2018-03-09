@@ -54,7 +54,7 @@ module.exports = (() => {
     // User Login
     userRoute.loginUser = (req, res) => {
         if (!func.isEmpty(req.body)) {
-            userModel.findOne({email: req.body.email }, (err, data) => {
+            userModel.findOne({ email: req.body.email }, (err, data) => {
                 if (data == null) { // The email does not exist
                     res.status(404).json({ code: 404, message: 'The email does not exist' })
                 } else if (data) {
@@ -83,10 +83,11 @@ module.exports = (() => {
         if (!func.isEmpty(req.query.id)) {
             userModel.findOne({ _id: req.query.id }, (err, data) => {
                 if (data == null) { // The email does not exist
-                    res.status(404).json({ code: 404, message: 'User is not exist s ' + req.query.id +' sd '})
+                    res.status(404).json({ code: 404, message: 'User is not exist s ' + req.query.id + ' sd ' })
                 } else if (data) {
                     res.status(200).json({
                         status: 200,
+                        _id: data._id,
                         userName: data.userName,
                         email: data.email,
                         photo: data.photo,
@@ -103,11 +104,27 @@ module.exports = (() => {
 
 
 
-    // userRoute.getUser = (req, res) => {
-    //     if (!func.isEmpty(req.id)) {
-    //     }
+    // Update information
+    userRoute.updateinformation = (req, res) => {
+        if (!func.isEmpty(req.body)) {
+            userModel.findByIdAndUpdate({
+                _id: req.body._id
+            }, {
+                    userName: req.body.userName,
+                    photo: req.body.photo,
+                    email: req.body.email,
+                    timeModified: Date.now()
+                }, {
+                    upsert: true,
+                    new: true
+                }).exec((err, new_user) => {
+                    res.status(200).json({ code: 200, message: 'Update account information successfully' })
+                })
 
-    // }
+        } else {
+            res.status(403).json({ code: 403, message: 'The request is understood, but it has been refused or access is not allowed' })
+        }
+    }
 
 
     return userRoute

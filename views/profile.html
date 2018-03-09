@@ -2,9 +2,11 @@
 <script src="/js/main/profile.js"></script>
 
 <div class="container my-container-center">
-    <form role="form" class="ng-pristine ng-valid ng-valid-maxlength" ng-controller="profileController">
+    <form role="form" class="ng-pristine ng-valid ng-valid-maxlength" ng-controller="profileController" method="POST" action="/profile"
+        enctype="multipart/form-data">
         <div class="my-container-center animated flipInX my-div-block" id="my-div-block-top">
             <div class="form-group">
+                <input style="display: none" name="_id" id="_id"/>
                 <div class="input-group my-div my-div-2">
                     <h2 style="text-align:center">Thông tin cá nhân</h2>
                 </div>
@@ -27,7 +29,7 @@
                     <span class="input-group-addon">
                         <i class="fa fa-envelope fa-lg"></i>
                     </span>
-                    <input type="text" class="form-control" disabled="" id="email" value="">
+                    <input type="text" class="form-control" name="emailvalue" disabled="" id="email" value="">
                 </div>
 
                 <h6> Tên người dùng </h6>
@@ -35,7 +37,7 @@
                     <span class="input-group-addon">
                         <i class="fa fa-address-card fa-lg"></i>
                     </span>
-                    <input type="text" class="form-control" id="username" placeholder="Tên người dùng" maxlength="30" value="">
+                    <input type="text" class="form-control" name="username" id="username" placeholder="Tên người dùng" maxlength="30" value="">
                 </div>
 
                 <h6> Số điện thoại </h6>
@@ -43,10 +45,10 @@
                     <span class="input-group-addon">
                         <i class="fa fa-phone-square fa-lg"></i>
                     </span>
-                    <input type="number" class="form-control" id="tel" name="tel" placeholder="Số điện thoại" ng-model="tel">
+                    <input type="number" class="form-control" id="phone" name="phone" placeholder="Số điện thoại" ng-model="phone">
                 </div>
                 <div class="my-container-right">
-                    <button type="submit" class="btn btn-primary my-btn-profile text-center animated slideInUp" ng-click="clickSaveProfile()">
+                    <button type="submit" class="btn btn-primary my-btn-profile text-center animated slideInUp">
                         <i class="fa fa-floppy-o fa-lg" aria-hidden="true"></i>
                         Lưu thay đổi
                     </button>

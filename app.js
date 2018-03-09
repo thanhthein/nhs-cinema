@@ -56,7 +56,8 @@ var adminRoute = require('./routes/adminRoute')(app),
   filmRoute = require('./routes/filmRoute')(app),
   userRoute = require('./routes/userRoute')(app),
   home = require('./routes/appRoute')(app),
-  uploadRoute = require('./routes/uploadRoute')(app)
+  uploadRoute = require('./routes/uploadRoute')(app),
+  infoUserRoute = require('./routes/infoUserRoute')(app)
 
 app.listen(port)
 
