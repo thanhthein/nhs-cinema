@@ -5,11 +5,12 @@ app.controller("profileController", ['$scope', function ($scope) {
     hideSearch();
     hideUploadFilm();
     // Login 
-    $.get('/user/', {}, function (res) {
+    $.get('/user', { id: getCookie('userid') }, function (res) {
         if (res.status == 200) {
-            document.getElementById('email').value = res.email,
-                document.getElementById('username').value = res.userName
-            console.log("Already get");
+            document.getElementById('email').value = res.email
+            document.getElementById('username').value = res.userName
+            document.getElementById('imageAvatar').src = res.photo
+            document.getElementById('tel').value = res.phone
         } else {
             console.log("Can not get");
 

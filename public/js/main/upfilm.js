@@ -1,6 +1,7 @@
-angular.module("cinema").controller("upFilmController", ['$scope', function ($scope) {
+var app = angular.module("cinema")
+app.controller("upFilmController", ['$scope', function ($scope) {
 
-    var photoUrl;
+    var photoUrl
 
     hideLogin();
     hideSearch();
@@ -41,6 +42,7 @@ angular.module("cinema").controller("upFilmController", ['$scope', function ($sc
     $scope.appName = "Any things !!";
 
     $scope.clickUploadFilm = function () {
+        
         if (document.getElementById('filmName').value.length < 5 || document.getElementById('filmName').value.length > 50) {
             document.getElementById('filmName').setCustomValidity('Tên bộ phim từ 5-50 ký tự');
             return;
@@ -79,10 +81,8 @@ angular.module("cinema").controller("upFilmController", ['$scope', function ($sc
 
     $scope.uploadImage = function () {
         // console.log("UPload image start !");
-        // $.post('/upload',{}, function (req, res) {
+        // $.post('/upload', function (req, res) {
         //     console.log(res);
-        //     console.log('==== ');
-            
         // });
     }
 

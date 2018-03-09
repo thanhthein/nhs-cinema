@@ -1,29 +1,23 @@
 
 <script src="/js/main/detail.js"></script>
 
-<div id="detail-film">
+<div id="detail-film" ng-controller="filmDetailController">
     <div class="my-container-center my-title-header animated flipInX" ng-cloak>
-        <h1 class="title-name-film"> Name film </h1>
+        <h1 class="title-name-film" id="name"> {{ name }} </h1>
     </div>
 
     <div class="row ">
         <div class="col-sm-12 col-md-5 my-detail-image text-center">
             <a href="#" data-toggle="modal" data-target="#modalImage">
-                <img src="https://imagejournal.org/wp-content/uploads/2018/02/392527381_37a80e9053_o-600x300.jpg">
+                <img src="{{ photo }}">
             </a>
         </div>
 
         <div class="col-sm-12 col-md-7 animated flipInX" ng-cloak>
-            <h4> Thể loại: &nbsp; Thể loại </h4>
-            <h4> Thời điểm phát hành: &nbsp; 2018 </h4>
+            <h4> Thể loại: &nbsp; <span id="category">{{ catego }}</span></h4>
+            <h4> Thời điểm phát hành: &nbsp; <span id="year">{{ year }}</span> </h4>
             <h4> Nội dung mô tả: </h4>
-            <p> Phim Tình Thương Của Mẹ Hổ xoay quanh cuộc sống gia đình Trà Hướng Thiện, một cô gái xinh đẹp, giỏi việc nhà
-                đảm việc ngoài xã hội được mọi người yêu thuông quý mến. Từ bé cô đã được mẹ chỉ bảo mọi việc, sống trong
-                môi trường rất nghiêm khắc nên khi lớn lên cô cũng bị ảnh hưởng theo. Khi lập gia đình sinh con gái tên Nghiêm
-                Thiến Du, Hướng Thiện củng vận dụng những phép tắc mà mình được dạy từ bé đem áp đặt lên con gái. Việc này
-                làm cho Thiến Du cảm thấy khó chịu, chịu áp lực nặng khiến tình cảm mẹ con rạng nức, căng thẳng.Không chỉ
-                nghiêm khắc chuyện gia đình mà kể cả trong công việc Hướng Thiện cũng khá rập khuôn hay xích mích, cải nhau
-                với đồng nghiệp Viên Viên. </p>
+            <p id="detail"> {{ detail }} </p>
         </div>
     </div>
     <div class="my-container-center my-bot-form">

@@ -1,17 +1,17 @@
 <script src="/js/main/loadfilm.js"></script>
 <div ng-controller="loadFilmController">
     <div class="row">
-        <div onclick="goToFilmDetail()" class="col-lg-4 col-md-4 col-sm-6 col-xs-12 my-portfolio-item animated fadeInUp" ng-repeat="film in listFilm" ng-bind-html-unsafe="film.filmName">
+        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 my-portfolio-item animated fadeInUp" ng-repeat="film in listFilm | filter:{filmName: filmsearch, lastname: categoryName}" o>
 
-            <a>
-                <img ng-src="[[ film.photo ]]" class="img-responsive" alt=" [[ film.filmName ]]">
+            <a ng-href="[[urlFilm(film)]]" onclick="goToFilm(film)" target="_self">
+                <img ng-src="[[film.photo]]" class="img-responsive" alt=" [[ film.filmName ]]">
                 <div class="detail">
                     <h2 class="name-film"> [[ film.filmName ]] ([[ film.year ]]) </h2>
                     <hr class="hr-film">
                     <p class="content-film">
                         <span class="my-text-bold"> Thể loại: </span>[[film.categoryName]] </p>
-                    <!-- <p class="content-film" ng-init="content=minContentFilm(film)">
-                    <span class="my-text-bold"> Nội dung: </span> [[content]] </p> -->
+                    <p class="content-film" ng-init="content=minContentFilm(film)">
+                    <span class="my-text-bold"> Nội dung: </span> [[content]] </p>
                 </div>
             </a>
         </div>

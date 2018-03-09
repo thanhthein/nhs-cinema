@@ -1,4 +1,6 @@
 module.exports = (() => {
+    mongoose = require('mongoose'),
+    filmModel = mongoose.model('filmModel'),
     appRoute = {}
 
     appRoute.home = (req, res) => {
@@ -6,7 +8,7 @@ module.exports = (() => {
         res.render('listfilm', {
             layout: 'template-layout',
             message: "defaultmess",
-            title: 'Dashboard', 
+            title: 'Dashboard',
         })
     }
 
@@ -18,9 +20,19 @@ module.exports = (() => {
     }
 
     appRoute.filmDetail = (req, res) => {
-        res.render('film-detail', {
-            layout: 'template-layout',
-            title: 'Film detail'
+        filmModel.find({ _id: req.query.id }, (err, result) => {
+            if (!func.isEmpty(result)) {
+                res.render('film-detail', {
+                    layout: 'template-layout',
+                    title: 'Film detail',
+                    name: result.filmName,
+                    catego: result.categoryName,
+                    detail: result.detail,
+                    photo: result.photo
+                })
+            } else {
+                res.status(404).json({ code: 404, message: 'Film is empty now !' })
+            }
         })
     }
 

@@ -10,7 +10,9 @@ var express = require('express'),
   path = require('path'),
   html = require('express-handlebars'),
   bodyParser = require('body-parser'),
-  mongoose = require('mongoose')
+  mongoose = require('mongoose'),
+  fileUpload = require('express-fileupload');
+
 
 // Config mongoose
 mongoose.Promise = global.Promise
@@ -22,6 +24,8 @@ mongoose.connect(config_mog.__MONGO_LINK)
 //   resave: true,
 //   saveUninitialized: true
 // }));
+
+app.use(fileUpload());
 
 // Config template views
 app.engine('html', html({

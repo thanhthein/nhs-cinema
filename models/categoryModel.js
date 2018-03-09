@@ -18,7 +18,7 @@ var mongoose = require('mongoose'),
             default: ""
         },
         time_create: {
-            type: Date,
+            type: Number,
             default: Date.now
         }
     })

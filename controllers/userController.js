@@ -13,7 +13,7 @@ module.exports = (() => {
         }
 
     userRoute.createUser = (req, res) => {
-        if (!func.isEmpty(req.body)) {
+        if (!func.isEmpty(req.body) && req.body.userName.length > 1 && !req.body.password.length > 1 && !req.body.photo) {
             userModel.find({ email: req.body.emailSignUp }, (error, result) => {
                 if (result[0] === undefined) {
                     let __encrypt_password = (hash) => {
@@ -34,7 +34,10 @@ module.exports = (() => {
                             if (err) {
                                 res.status(400).json({ code: 400, message: "Create new user failed !" })
                             } else {
-                                res.status(200).json({ code: 200, message: "Create new user successfully !" })
+                                res.status(200).json({
+                                    code: 200, message: "Create new user successfully !",
+                                    user: data
+                                })
                             }
                         })
                     }
@@ -43,13 +46,15 @@ module.exports = (() => {
                     res.status(400).json({ code: 400, message: 'Email address already exists' })
                 }
             })
+        } else {
+            res.status(400).json({ code: 400, message: 'I cant regist your account !' })
         }
     }
 
     // User Login
     userRoute.loginUser = (req, res) => {
         if (!func.isEmpty(req.body)) {
-            userModel.findOne({ email: req.body.email }, (err, data) => {
+            userModel.findOne({email: req.body.email }, (err, data) => {
                 if (data == null) { // The email does not exist
                     res.status(404).json({ code: 404, message: 'The email does not exist' })
                 } else if (data) {
@@ -63,11 +68,6 @@ module.exports = (() => {
                             userName: data.userName,
                             accessToken: data.accessToken,
                         })
-
-                        req.session.user = data.userName;
-                        if (res.userName == "Admin")
-                            req.session.admin = true;
-                        req.session.email = data.email
                     } else {
                         res.status(400).json({ code: 400, message: 'Wrong password' })
                         return
@@ -80,15 +80,16 @@ module.exports = (() => {
     }
 
     userRoute.getUser = (req, res) => {
-        if (!func.isEmpty(req.id)) {
-            userModel.findOne({ _id: req.id }, (err, data) => {
+        if (!func.isEmpty(req.query.id)) {
+            userModel.findOne({ _id: req.query.id }, (err, data) => {
                 if (data == null) { // The email does not exist
-                    res.status(404).json({ code: 404, message: 'User is not exist' })
+                    res.status(404).json({ code: 404, message: 'User is not exist s ' + req.query.id +' sd '})
                 } else if (data) {
                     res.status(200).json({
-                        code: 200,
+                        status: 200,
                         userName: data.userName,
                         email: data.email,
+                        photo: data.photo,
                         timeCreate: data.timeCreate
                     })
                 } else {

@@ -6,13 +6,16 @@ app.controller("todoController", ['$scope', function ($scope) {
     });
 
 
-    if (getCookie("username")) {
-        document.getElementById('tabLogin').style = 'display: none';
-        document.getElementById('tabloginShow').style = "display: block";
-        document.getElementById('tabloginShow2').style = "display: block";
-        document.getElementById('nameusercurrent').innerText = getCookie("username");
-        hideLogin();
-        console.log("Already login !");
+    if (getCookie("userid")) {
+        $.get('/user', { id: getCookie('userid') }, function (res) {
+            console.log("Get user status : " + res.status);
+            if (res.status == 200) {
+                showUser();
+                document.getElementById('nameusercurrent').innerText = res.userName;
+            } else {
+                console.log("Can not get");
+            }
+        })
     } else {
         console.log("Did not login !");
         hideUploadFilm();
@@ -36,7 +39,18 @@ app.controller("todoController", ['$scope', function ($scope) {
         return window.location.href + "film/detail/" + film.film_id;
     }
 
+    $scope.searchClick = function(){
+        toggleInputSearch();
+    }
+
+
 }]);
+// -----------   TOGGLE INPUT SEARCH --------------
+
+function toggleInputSearch() {
+    $('#inputsearch').animate({ width: 'toggle' }, 4000);
+}
+
 
 function hideSearch() {
     $('#formSearch').attr('style', 'display:none');
@@ -52,6 +66,12 @@ function hideUploadFilm() {
 
 function showRegister() {
     $('#tabRegister').attr('style', 'display: block');
+}
+
+function showUser() {
+    document.getElementById('tabloginShow').style = "display: block";
+    document.getElementById('tabloginShow2').style = "display: block";
+    hideLogin();
 }
 
 function goLogin() {
@@ -84,7 +104,7 @@ function getCookie(cname) {
 }
 
 function removeCookie() {
-    document.cookie = "username= ; email= ,isAdmin=" + false;
+    document.cookie = "userid=";
 }
 
 function logOut() {

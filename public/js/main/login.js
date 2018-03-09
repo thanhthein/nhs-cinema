@@ -3,20 +3,21 @@ var app = angular.module("cinema");
 app.controller("loginController", ['$scope', function ($scope) {
 
     hideSearch();
-    hideUploadFilm(); showRegister();
+    hideUploadFilm(); 
+    showRegister();
+    hideLogin();
     // Login 
     $scope.clickLogin = function () {
         if (document.getElementById('password').value.length > 6 && document.getElementById('email').value.length > 7) {
             $.post("/login/", {
-                password: $scope.password,
-                email: $scope.email
+                email: $scope.emailUser,
+                password: $scope.passwordUser
             }, function (res) {
                 console.log(res);
                 if (res.code == 200) {
                     alert(res.message);
                     window.location.href = '/'
-                    document.cookie = "username=" + $scope.password + "; email=" + $scope.email + ",isAdmin=" + false;
-                    return
+                    document.cookie = "userid=" + res._id;
                 }
             })
         } else {

@@ -11,12 +11,12 @@
 
                 <div class="my-input-avatar">
                     <a href="" ng-click="clickUploadImage()">
-                        <img class="imageAvatar" id="imageAvatar" name="imageAvatar" ng-src="./images/default.svg" src="./images/default.svg">
+                        <img class="imageAvatar" id="imageAvatar" name="imageAvatar" ng-src="./images/default.svg">
                     </a>
-                    <input type="file" style="display:none" id="fileInputAvatar" name="fileInputAvatar" accept="image/*" onchange="readURLImg(this)">
+                    <input type="file" style="display:none; margin-top: 15px" id="fileInputAvatar" name="fileInputAvatar" accept="image/*" onchange="readURLImg(this)">
                     <span> </span>
                     <div class="input-group my-container-center">
-                        <button type="button" class="btn btn-secondary my-btn text-center" ng-click="clickUploadImage()" style="color:black; width: 80px; font-size: 12px">
+                        <button type="button" class="btn btn-secondary my-btn text-center" ng-click="clickUploadImage()" style="color:black; width: 80px; font-size: 12px; margin-top: 10px">
                             Chọn
                         </button>
                     </div>
@@ -27,7 +27,7 @@
                     <span class="input-group-addon">
                         <i class="fa fa-envelope fa-lg"></i>
                     </span>
-                    <input type="text" class="form-control" disabled="" id="email" value="sdss">
+                    <input type="text" class="form-control" disabled="" id="email" value="">
                 </div>
 
                 <h6> Tên người dùng </h6>
@@ -35,7 +35,7 @@
                     <span class="input-group-addon">
                         <i class="fa fa-address-card fa-lg"></i>
                     </span>
-                    <input type="text" class="form-control" id="username" placeholder="Tên người dùng" maxlength="30" value="sdsd">
+                    <input type="text" class="form-control" id="username" placeholder="Tên người dùng" maxlength="30" value="">
                 </div>
 
                 <h6> Số điện thoại </h6>

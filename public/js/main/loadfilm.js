@@ -27,11 +27,16 @@ app.controller("loadFilmController", ['$scope', function ($scope) {
 
 
     $scope.urlFilm = function (film) {
-        return window.location.href + "film/detail/" + film.film_id;
+        return window.location.href + "film-detail?id=" + film._id;
     }
+    
+    $scope.goToFilm = function (film) {
+         window.location.href + "film-detail?id=" + film._id;
+    }
+
 
 }])
 
-function goToFilmDetail() {
-    window.location.href + "/film-detail?id=" + film.film_id;
+function goToFilm(film) {
+    window.location.href + "film-detail?id="+film._id;
 }

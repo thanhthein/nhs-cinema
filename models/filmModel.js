@@ -31,10 +31,10 @@ var mongoose = require('mongoose'),
         },
         photo: {
             type: String,
-            default: ""
+            default: "./images/no-image.jpg"
         },
         timeCreate: {
-            type: Date,
+            type: Number,
             default: Date.now
         }
     })

@@ -13,12 +13,16 @@ var mongoose = require('mongoose'),
             type: String,
             default: ""
         },
-        photo: {
+        phone: {
             type: String,
             default: ""
         },
+        photo: {
+            type: String,
+            default: "./images/default.svg"
+        },
         timeCreate: {
-            type: Date,
+            type: Number,
             default: Date.now
         },
         accessToken: {
