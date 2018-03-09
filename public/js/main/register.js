@@ -36,14 +36,14 @@ app.controller("registerController", ['$scope', function ($scope) {
             }, function (res) {
                 console.log(res);
                 if (res.code == 200) {
-                    alert(res.message);
-                    window.location.href = '/'
+                    showAlertAndGo(res.message, "/")
+                    document.cookie = "userid=" + res.user._id;
                 } else {
-                    alert("Can not create your account, please try again !")
+                    swal(res.message)
                 }
             })
         } else {
-            alert("Password is not correct !");
+            swal("Password is not correct !")
         }
 
     }

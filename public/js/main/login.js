@@ -7,10 +7,10 @@ app.controller("loginController", ['$scope', function ($scope) {
     showRegister();
     hideLogin();
 
-    if(getCookie("rp")){
+    if (getCookie("rp")) {
         $scope.email = window.atob(getCookie("pre"))
-        $scope.password =  window.atob(getCookie("prp"))
-        $scope.rememberPassword = true  
+        $scope.password = window.atob(getCookie("prp"))
+        $scope.rememberPassword = true
     }
 
     // Login 
@@ -43,11 +43,10 @@ app.controller("loginController", ['$scope', function ($scope) {
             password: $scope.password
         }, function (res) {
             if (res.code == 200) {
-                alert(res.message);
-                window.location.href = '/'
+                showAlertAndGo(res.message, "/")
                 document.cookie = "userid=" + res._id;
             } else {
-                alert(res.message);
+                swal(res.message)
             }
         })
     }

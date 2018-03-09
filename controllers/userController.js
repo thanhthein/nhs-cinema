@@ -32,7 +32,7 @@ module.exports = (() => {
                             })
                         }).save((err, data) => {
                             if (err) {
-                                res.status(400).json({ code: 400, message: "Create new user failed !" })
+                                res.status(200).json({ code: 400, message: "Create new user failed !" })
                             } else {
                                 res.status(200).json({
                                     code: 200, message: "Create new user successfully !",
@@ -43,11 +43,11 @@ module.exports = (() => {
                     }
                     __generate_password(__encrypt_password, req.body.password)
                 } else {
-                    res.status(400).json({ code: 400, message: 'Email address already exists' })
+                    res.status(200).json({ code: 400, message: 'Email address already exists' })
                 }
             })
         } else {
-            res.status(400).json({ code: 400, message: 'I cant regist your account !' })
+            res.status(200).json({ code: 400, message: 'I cant regist your account !' })
         }
     }
 
@@ -103,11 +103,11 @@ module.exports = (() => {
                         timeCreate: data.timeCreate
                     })
                 } else {
-                    res.status(404).json({ code: 403, message: 'User is not found' })
+                    res.status(200).json({ code: 403, message: 'User is not found' })
                 }
             })
         } else {
-            res.status(403).json({ code: 403, message: 'The request is understood, but it has been refused or access is not allowed' })
+            res.status(200).json({ code: 403, message: 'The request is understood, but it has been refused or access is not allowed' })
         }
     }
 
@@ -131,7 +131,7 @@ module.exports = (() => {
                 })
 
         } else {
-            res.status(403).json({ code: 403, message: 'The request is understood, but it has been refused or access is not allowed' })
+            res.status(200).json({ code: 403, message: 'The request is understood, but it has been refused or access is not allowed' })
         }
     }
 

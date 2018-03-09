@@ -29,6 +29,12 @@ h4,
 h6 {
   font-weight: bold;
 } */
+
+.image-detail {
+  max-width: 300px;
+  max-height: 500px;
+}
+
 .container {
   background-color: rgb(255, 255, 249);
   padding: 0 !important;

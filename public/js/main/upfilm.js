@@ -1,7 +1,7 @@
 var app = angular.module("cinema")
 app.controller("upFilmController", ['$scope', function ($scope) {
 
-    var photoUrl
+    var photoUrl, filePicked
 
     hideLogin();
     hideSearch();
@@ -30,6 +30,8 @@ app.controller("upFilmController", ['$scope', function ($scope) {
         'Tội ác',
     ];
 
+    $scope._id = getCookie('userid');
+
     $scope.listMonth = [];
     for (var i = 1; i <= 12; i++) $scope.listMonth.push('Tháng ' + i);
     $scope.listYear = [];
@@ -39,34 +41,42 @@ app.controller("upFilmController", ['$scope', function ($scope) {
     $scope.filmYear = 'Năm ' + new Date().getFullYear();
 
 
-    $scope.appName = "Any things !!";
+    document.getElementById('fileInput').addEventListener('change', function (e) {
+        filePicked = e.target.files[0];
+    }, false);
+
 
     $scope.clickUploadFilm = function () {
-        
-        if (document.getElementById('filmName').value.length < 5 || document.getElementById('filmName').value.length > 50) {
+        if (document.getElementById('filmName').value.length < 5 ||
+            document.getElementById('filmName').value.length > 50) {
             document.getElementById('filmName').setCustomValidity('Tên bộ phim từ 5-50 ký tự');
-            return;
+            return
         }
         document.getElementById('filmName').setCustomValidity('');
 
         if (document.getElementById('filmContent').value.length < 10) {
             document.getElementById('filmContent').setCustomValidity('Mô tả bộ phim tối thiểu 10 ký tự');
-            return;
+            return
         }
         document.getElementById('filmContent').setCustomValidity('');
 
-        $.post("/film/", {
-            filmName: $scope.filmName,
-            categoryName: $scope.filmGenre,
-            year: $scope.filmYear.value.replace("string:", ""),
-            detail: $scope.filmContent
-        }, function (res) {
-            console.log(res);
-            if (res.code == 200) {
-                alert(res.message);
-                window.location.href = '/'
-            }
-        })
+        if (filePicked === null) {
+            swal('Bạn chưa chọn ảnh minh họa phim');
+            return
+        } else {
+            $.post("/film/", {
+                filmName: $scope.filmName,
+                categoryName: $scope.filmGenre,
+                year: year,
+                detail: $scope.filmContent
+            }, function (res) {
+                if (res.code == 200) {
+                    showAlertAndGo(res.message, "/")
+                } else {
+                    swal(res.message)
+                }
+            })
+        }
 
     }
 
@@ -79,21 +89,12 @@ app.controller("upFilmController", ['$scope', function ($scope) {
         return film.content.substr(0, len) + '...';
     }
 
-    $scope.uploadImage = function () {
-        // console.log("UPload image start !");
-        // $.post('/upload', function (req, res) {
-        //     console.log(res);
-        // });
-    }
-
 }])
 
 function readURL(input) {
-    console.log(input);
     if (input.files && input.files[0]) {
         var reader = new FileReader();
         reader.onload = function (e) {
-            console.log(e);
             $('#imageFilm').attr('src', e.target.result);
         }
 

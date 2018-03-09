@@ -9,6 +9,10 @@ var mongoose = require('mongoose'),
             type: String,
             default: ""
         },
+        owerId: {
+            type: String,
+            default: ""
+        },
         categoryName: {
             type: String,
             default: ""
@@ -20,6 +24,10 @@ var mongoose = require('mongoose'),
         timeOpen: {
             type: String,
             default: ""
+        },
+        month: {
+            type: String,
+            default: "1"
         },
         year: {
             type: String,
@@ -34,6 +42,10 @@ var mongoose = require('mongoose'),
             default: "./images/no-image.jpg"
         },
         timeCreate: {
+            type: Number,
+            default: Date.now
+        },
+        timeModified: {
             type: Number,
             default: Date.now
         }

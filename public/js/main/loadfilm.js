@@ -18,10 +18,15 @@ app.controller("loadFilmController", ['$scope', function ($scope) {
         $scope.$apply();
     })
 
-
     $scope.minContentFilm = function (film) {
         var len = film.detail.length > 150 ? 150 : film.detail.length;
         return film.detail.substr(0, len) + '...';
+    }
+    
+    // Get here because don't know how to fix when create film -_-
+    $scope.getYearFilm = function (film) {
+        var len = film.year
+        return len.replace("string:", "");
     }
 
 

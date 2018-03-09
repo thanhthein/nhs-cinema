@@ -14,7 +14,7 @@ module.exports = (() => {
                         photo: req.body.photo
                     }).save((err, data) => {
                         if (err) {
-                            res.status(400).json({ code: 400, message: "Create new category failed !" })
+                            res.status(200).json({ code: 400, message: "Create new category failed !" })
                         } else {
                             res.status(200).json({ code: 200, message: "Create new category successfully !" })
                         }

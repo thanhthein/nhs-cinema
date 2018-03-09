@@ -18,24 +18,11 @@ module.exports = (() => {
             title: 'Upload new film'
         })
     }
-
+    
     appRoute.filmDetail = (req, res) => {
-        filmModel.find({ _id: req.query.id }, (err, result) => {
-
-            console.log(" = " +res);
-            
-        //     if (!func.isEmpty(result)) {
-                res.render('film-detail', {
-                    layout: 'template-layout',
-                    title: 'Film detail',
-                    // name: result.filmName,
-                    // catego: result.categoryName,
-                    // detail: result.detail,
-                    // photo: result.photo
-                })
-            // } else {
-            //     res.status(404).json({ code: 404, message: 'Film is empty now !' })
-            // }
+        res.render('film-detail', {
+            layout: 'template-layout',
+            title: 'Film detail'
         })
     }
 

@@ -21,7 +21,7 @@ app.controller("todoController", ['$scope', function ($scope) {
         hideUploadFilm();
     }
 
-    $scope.searchClick = function(){
+    $scope.searchClick = function () {
         toggleInputSearch();
     }
 
@@ -68,6 +68,21 @@ function goUpload() {
     window.location.href = '/upfilm';
 }
 
+function showAlertAndGo(title, url){
+    swal(title, "", "success", {
+        button: "OK",
+      }).then((value) => {
+        window.location.href = url
+    });  
+}
+
+function showErrGoHome(title){
+    swal(title, "", "error", {
+        button: "OK",
+      }).then((value) => {
+        window.location.href = '/'
+    });  
+}
 
 function getCookie(cname) {
     var name = cname + "=";
@@ -90,6 +105,20 @@ function removeCookie() {
 }
 
 function logOut() {
-    removeCookie();
-    window.location.href = '/';
+    swal("Are you sure you want to logout ?", {
+        buttons: {
+            cancel: "Canel",
+            OK: true,
+        },
+    })
+        .then((value) => {
+            switch (value) {
+                case "OK":
+                    removeCookie();
+                    window.location.href = '/';
+                    break;
+                case "Canel":
+                    break;
+            }
+        });
 }
